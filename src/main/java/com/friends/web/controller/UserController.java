@@ -28,7 +28,14 @@ public class UserController {
     @RequestMapping(method = RequestMethod.POST)
     @ResponseStatus(HttpStatus.OK)
     public User newUser(@RequestParam String username) {
-        User user = new User();
+        User user = userRepository.findByUsername(username);
+
+        if (user != null) {
+            return user;
+        } else {
+            user = new User();
+        }
+
         user.setUsername(username);
         return userRepository.save(user);
     }
