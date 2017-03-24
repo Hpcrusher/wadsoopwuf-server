@@ -20,7 +20,7 @@ public class WordController {
     @RequestMapping(method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     public List<String> get3Words() {
         ArrayList<String> words = new ArrayList<>();
-        while (words.size() > 3) {
+        while (words.size() < 3) {
             final String randomWord = Words.getRandomWord();
             if (!words.contains(randomWord)) {
                 words.add(randomWord);
