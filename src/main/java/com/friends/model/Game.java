@@ -1,10 +1,6 @@
 package com.friends.model;
 
-import org.hibernate.annotations.Type;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 /**
  * @author David Liebl
@@ -14,12 +10,12 @@ import javax.persistence.Table;
 @Table(name = "game")
 public class Game extends AbstractIdEntity{
 
-    @Column(name = "user_a", nullable = false)
-    @Type(type = "com.friends.repository.converter.UuidType")
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "user_id_a")
     private User userA;
 
-    @Column(name = "user_b", nullable = false)
-    @Type(type = "com.friends.repository.converter.UuidType")
+    @ManyToOne(targetEntity = User.class)
+    @JoinColumn(name = "user_id_b")
     private User userB;
 
     @Column(name = "a_is_drawing", nullable = false)
