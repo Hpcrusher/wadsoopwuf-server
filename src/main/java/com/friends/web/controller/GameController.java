@@ -65,7 +65,8 @@ public class GameController {
         if (game == null) {
             return;
         }
-        //TODO
+        game.setPicture(dto.picture);
+        game.setUserAIsDrawing(!game.getUserAIsDrawing());
         gameRepository.save(game);
     }
 
